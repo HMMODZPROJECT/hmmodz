@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prank Login - Sound Effect</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <i class="fas fa-user-lock"></i>
+            <h1>SECURE LOGIN</h1>
+        </div>
+        
+        <div class="input-group">
+            <input type="text" placeholder="Username" id="username">
+        </div>
+        
+        <div class="input-group">
+            <input type="password" placeholder="Password" id="password">
+        </div>
+        
+        <div class="options">
+            <div class="remember-me">
+                <input type="checkbox" id="remember">
+                <label for="remember">Remember me</label>
+            </div>
+            <div class="forgot-password">
+                <a href="#">Forgot Password?</a>
+            </div>
+        </div>
+        
+        <button class="login-btn" id="loginBtn">LOGIN</button>
+        
+        <div class="prank-note" id="prankNote">
+            <i class="fas fa-info-circle"></i> LOGIN KE PANEL BUG.
+        </div>
+        
+        <div class="signup">
+            Don't have an account? <a href="#">Sign up now</a>
+        </div>
+    </div>
+    
+    <div class="footer">
+        &copy; 2025  Login Panel Bug Wa 
+    </div>
+    
+    <audio id="loginSound">
+        <source src="https://i.top4top.io/m_3477edd1a0.mp3" type="audio/mpeg">
+    </audio>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginBtn = document.getElementById('loginBtn');
+            const loginSound = document.getElementById('loginSound');
+            const prankNote = document.getElementById('prankNote');
+            
+            setTimeout(() => {
+                prankNote.style.display = 'block';
+            }, 3000);
+            
+            loginBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                loginSound.currentTime = 0;
+                loginSound.play();
+                this.classList.add('shake');
+                setTimeout(() => {
+                    this.classList.remove('shake');
+                }, 500);
+                const originalText = this.textContent;
+                this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+                this.disabled = true;
+                setTimeout(() => {
+                    this.textContent = originalText;
+                    this.disabled = false;
+                    alert("PERCAYA AJA LU KONTOL 😹😜");
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>
